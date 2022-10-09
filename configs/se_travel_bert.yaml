@@ -1,0 +1,28 @@
+data-module: experiment.qa.data.insuranceqa.tsv
+model-module: experiment.qa_hinge.model.lw_paper.lstm
+training-module: experiment.qa.train.no_training
+evaluation-module: experiment.qa.evaluation.evaluation_bert
+
+logger:
+  level: DEBUG
+  path: logs/se_travel_bert.txt
+
+global:
+  question_length: 50
+  answer_length: 400
+  embedding_size: 300
+
+data:
+  add_coref: true
+
+  train_data: 
+    - data/stackexchange-answerselection/travel.stackexchange.com
+
+model:
+  lstm_cell_size: 490
+  trainable_embeddings: false
+  margin: 0.2
+
+evaluation:
+  skip: false
+  output: '../'
